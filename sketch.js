@@ -20,6 +20,9 @@ function setup() {
   createCanvas(400, 400);
   myInput = createInput()
   myInput.position(20,50)
+  myButton = createButton("Guess");
+  myButton.position(200,50)
+  myButton.mousePressed(guess);
   arrayOfSecretWords = ["jazz","lynx","You can't handle the truth","Very Nice","Forest Gump","May the force be with you" ,"math", "computer science"];
   selectSecretWord();
   solution = "";

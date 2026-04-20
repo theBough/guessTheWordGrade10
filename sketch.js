@@ -2,6 +2,17 @@
 let myInput,myButton,myImage;
 let arrayOfSecretWords,secretWord, solution;
 
+function guess(){
+  let theirGuess = myInput.value()//grab the letter from the input box.
+  if(secretWord.indexOf(theirGuess) > 0){
+    //the letter they guessed is in the secret word
+    let position = secretWord.indexOf(theirGuess)//index of the guess;
+    let editSolution = solution.split("")//splits the solution into an array
+    editSolution[position] = theirGuess;//changes the dash to their guess
+    position = editSolution.join("")
+    
+  }
+}
 function makeBlanks(){
   for(let i=0 ; i< secretWord.length; i++){
     if(secretWord.charAt(i) == " "){
@@ -27,6 +38,8 @@ function setup() {
   selectSecretWord();
   solution = "";
   makeBlanks();
+  solution[3]='z'
+  print(solution)
 }
 function draw() {
   background(220);

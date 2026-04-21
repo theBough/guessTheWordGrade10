@@ -9,7 +9,7 @@ function guess(){
     let position = secretWord.indexOf(theirGuess)//index of the guess;
     let editSolution = solution.split("")//splits the solution into an array
     editSolution[position] = theirGuess;//changes the dash to their guess
-    position = editSolution.join("")
+    solution = editSolution.join("")//change the array back to a string
     
   }
 }
@@ -39,7 +39,6 @@ function setup() {
   solution = "";
   makeBlanks();
   solution[3]='z'
-  print(solution)
 }
 function draw() {
   background(220);

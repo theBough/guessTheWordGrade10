@@ -4,13 +4,20 @@ let arrayOfSecretWords,secretWord, solution;
 
 function guess(){
   let theirGuess = myInput.value()//grab the letter from the input box.
-  if(secretWord.indexOf(theirGuess) > 0){
+  theirGuess = theirGuess.toLowerCase()
+  if(secretWord.indexOf(theirGuess) >= 0){
     //the letter they guessed is in the secret word
-    let position = secretWord.indexOf(theirGuess)//index of the guess;
+    let positions = []//array that holds the position of repeated letters
+    for(let i =0 ; i < secretWord.length ; i++){
+      if(secretWord[i] == theirGuess){
+        positions.push(i);//add the location of the guessed letter
+      }
+    }//end loop
     let editSolution = solution.split("")//splits the solution into an array
-    editSolution[position] = theirGuess;//changes the dash to their guess
+    for(let i = 0; i < positions.length ; i++){
+      editSolution[positions[i]] = theirGuess;//changes the dash to their guess  
+    }
     solution = editSolution.join("")//change the array back to a string
-    
   }
 }
 function makeBlanks(){
@@ -34,7 +41,7 @@ function setup() {
   myButton = createButton("Guess");
   myButton.position(200,50)
   myButton.mousePressed(guess);
-  arrayOfSecretWords = ["jazz","lynx","You can't handle the truth","Very Nice","Forest Gump","May the force be with you" ,"math", "computer science"];
+  arrayOfSecretWords = ["jazz","lynx","you can't handle the truth","very nice","forest gump","may the force be with you" ,"math", "computer science"];
   selectSecretWord();
   solution = "";
   makeBlanks();
@@ -45,7 +52,7 @@ function draw() {
   text("Guess the Word" ,20,20)
   push()
     textSize(60)
-    text(solution, 20,100);
+    text(solution, 20,200);
   pop()
   
 }

@@ -1,8 +1,10 @@
 //Global Variables
 let myInput,myButton,myImage;
-let arrayOfSecretWords,secretWord, solution;
+let arrayOfSecretWords,secretWord, solution, wrongCount;
 let pictures = []
-
+function wrong(){
+  wrongCount += 1;
+}
 function guess(){
   let theirGuess = myInput.value()//grab the letter from the input box.
   theirGuess = theirGuess.toLowerCase()
@@ -19,6 +21,8 @@ function guess(){
       editSolution[positions[i]] = theirGuess;//changes the dash to their guess  
     }
     solution = editSolution.join("")//change the array back to a string
+  }else{
+    wrong();
   }
 }
 function makeBlanks(){
@@ -37,6 +41,7 @@ function selectSecretWord(){
 }
 function setup() {
   createCanvas(400, 400);
+  wrongCount = 0;
   myInput = createInput()
   myInput.position(20,50)
   myButton = createButton("Guess");
@@ -59,5 +64,5 @@ function draw() {
     textSize(60)
     text(solution, 20,200);
   pop()
-  image(pictures[4],20,250)
+  image(pictures[wrongCount],20,250)
 }

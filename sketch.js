@@ -1,6 +1,7 @@
 //Global Variables
 let myInput,myButton,myImage;
 let arrayOfSecretWords,secretWord, solution;
+let pictures = []
 
 function guess(){
   let theirGuess = myInput.value()//grab the letter from the input box.
@@ -45,7 +46,11 @@ function setup() {
   selectSecretWord();
   solution = "";
   makeBlanks();
-  solution[3]='z'
+  for (let i =1 ; i<6 ; i++){
+    //load the images into an array
+    pictures.push(loadImage("pictures/pic" + i + ".png"))
+  }
+
 }
 function draw() {
   background(220);
@@ -54,5 +59,5 @@ function draw() {
     textSize(60)
     text(solution, 20,200);
   pop()
-  
+  image(pictures[4],20,250)
 }

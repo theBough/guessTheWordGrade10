@@ -1,7 +1,19 @@
 //Global Variables
-let myInput,myButton,myImage, lettersGuessed;
+let myInput,myButton,myImage, lettersGuessed, solveButton;
 let arrayOfSecretWords,secretWord, solution, wrongCount;
 let pictures = []
+function solve(){
+  let theirGuess = myInput.value()//grab the letter from the input box.
+  theirGuess = theirGuess.toLowerCase()
+  if(theirGuess === secretWord){
+    //they won the game.
+    lettersGuessed = "";
+    lettersGuessed  ="Congratulations you got it!!!"
+  }else{
+    lettersGuessed = "";
+    lettersGuessed  ="Sorry that was not it. Game Over"
+  }
+}
 function wrong(){
   wrongCount += 1;
 }
@@ -49,6 +61,9 @@ function setup() {
   myButton = createButton("Guess");
   myButton.position(200,50)
   myButton.mousePressed(guess);
+  solveButton = createButton("Solve");
+  solveButton.position(300,50)
+  solveButton.mousePressed(solve);
   arrayOfSecretWords = ["jazz","lynx","you can't handle the truth","very nice","forest gump","may the force be with you" ,"math", "computer science"];
   selectSecretWord();
   solution = "";

@@ -1,5 +1,5 @@
 //Global Variables
-let myInput,myButton,myImage;
+let myInput,myButton,myImage, lettersGuessed;
 let arrayOfSecretWords,secretWord, solution, wrongCount;
 let pictures = []
 function wrong(){
@@ -8,6 +8,7 @@ function wrong(){
 function guess(){
   let theirGuess = myInput.value()//grab the letter from the input box.
   theirGuess = theirGuess.toLowerCase()
+  lettersGuessed += theirGuess + " "
   if(secretWord.indexOf(theirGuess) >= 0){
     //the letter they guessed is in the secret word
     let positions = []//array that holds the position of repeated letters
@@ -42,6 +43,7 @@ function selectSecretWord(){
 function setup() {
   createCanvas(400, 400);
   wrongCount = 0;
+  lettersGuessed = ""
   myInput = createInput()
   myInput.position(20,50)
   myButton = createButton("Guess");
@@ -60,6 +62,7 @@ function setup() {
 function draw() {
   background(220);
   text("Guess the Word" ,20,20)
+  text("Letters Guessed: " + lettersGuessed, 20,100 )
   push()
     textSize(60)
     text(solution, 20,200);
